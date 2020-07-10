@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>PA Opioid Prediction | Data</title>
+
+    <!-- MapBox JS + CSS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- ChartJS -->
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+
+    <!-- Chart Colors -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+
+
+    <!-- Custom styles for this template -->
+    <style>
+      .jumbotron{padding:12rem;}
+      body{padding-top: 3.5rem;}
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+          filter: invert(1);
+      }
+    </style>
+
+    <!-- Bootstrap core CSS -->
+    <!--link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">PA Opioid Prediction</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Predictions</a>
+          </li>
+          <li class="nac-item active">
+            <a class="nav-link" href="#">Data</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Resources<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4"><b>Data-driven modeling for opioid forecasting.</b></h1>
+          <p style="font-size:larger;">This project runs on public data sets from state and national sources. For transparency, we publish our data sourcing and methodology.</p>
+          <!--p style="font-size:larger;">The data used to train our models was sampled from <a href="https://data.pa.gov/browse?limitTo=datasets&tags=opioid">Open Data Pennsylvania</a> and the Centers for Disease Control and Prevention's <a href="https://wonder.cdc.gov/mcd.html">WONDER Portal</a>.</p-->
+        </div>
+      </div>
+
+      <div id="demo" class="carousel slide" data-ride="carousel" data-interval=false>
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+
+          <!-- Graph 1 -->
+          <div class="carousel-item">
+            <div class="container">
+            <h3>Police Responses to Opioid Incidents by Day, 2018-Present</h3>
+            <canvas id="policeDayChart" width="400" height="200 !important"></canvas>
+              <script>
+              var ctx = document.getElementById('policeDayChart');
+              var myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                      datasets: [{
+                          label: "Incidents",
+                          data: [2325, 2478, 2431, 2588, 3000, 3186, 2666],
+                          backgroundColor: [
+                              'rgba(54, 162, 245, 0.3)',
+                              'rgba(54, 162, 245, 0.3)',
+                              'rgba(54, 162, 245, 0.3)',
+                              'rgba(54, 162, 245, 0.3)',
+                              'rgba(54, 162, 245, 0.3)',
+                              'rgba(54, 162, 245, 0.3)',
+                              'rgba(54, 162, 245, 0.3)'
+                              ],
+                          borderColor: [
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(54, 162, 235, 1)'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                    responsive: true,
+                    legend: {
+                      display: false
+                    },
+                    scales: {
+                      yAxes: [{
+                        scaleLabel: {
+                          display: true,
+                          labelString: "Incidents"
+                            },
+                        ticks: {
+                          beginAtZero: true, 
+                        }
+                          }]
+                      }
+                  }
+              });
+            </script>
+            </div>
+          </div>
+
+      <!-- Graph 2 -->
+      <div class="carousel-item active">
+            
+
+      <div class="container">
+        <h3>Opioid Death Rate by County, 1999-2018</h3>
+        <p>Source: <a href="https://wonder.cdc.gov/mcd.html">CDC Wonder</a></p>
+
+        <canvas id="MCD_Chart" height="150 !important"></canvas>
+        <script type="text/javascript">
+          var ctx = document.getElementById('MCD_Chart');
+          var MCD_Chart = new Chart(ctx,{
+            type: 'line',
+            data:{
+              labels: [1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018],
+              datasets: [
+        {label: ' Allegheny County ', fill: false, data: [7.3,7.6,7.0,9.2,12.6,11.7,13.6,7.6,13.6,14.0,13.7,13.3,16.3,18.6,17.7,19.7,29.4,45.9,55.1,32.3],},
+        {label: ' Beaver County ', fill: false, data: [,,,,,,,,,,,,12.9,15.3,20.0,12.4,13.6,35.2,30.7,14.6],},
+        {label: ' Berks County ', fill: false, data: [,,,,,,,,,4.9,6.8,5.6,5.8,5.8,7.7,10.2,6.7,18.6,20.8,18.3],},
+        {label: ' Bucks County ', fill: false, data: [,3.5,,,,,,,,,,,3.4,4.0,4.3,3.7,,9.4,18.3,18.8],},
+        {label: ' Butler County ', fill: false, data: [,,,,,,,,,,,,13.5,11.4,17.3,13.4,22.5,35.9,43.3,19.7],},
+        {label: ' Cambria County ', fill: false, data: [,,,,,,14.3,18.5,,14.5,,,,,,,22.0,33.4,16.5,16.7],},
+        {label: ' Chester County ', fill: false, data: [,,,,,,,,,,,,,,,,,7.9,12.5,21.3],},
+        {label: ' Crawford County ', fill: false, data: [,,,,,,,,,,,,,,,,,26.7,,23.5],},
+        {label: ' Cumberland County ', fill: false, data: [,,,,,,,,,,,,,,,,8.5,13.7,15.2,11.1],},
+        {label: ' Dauphin County ', fill: false, data: [,,,,,,,,,,,,,,7.8,,9.2,9.9,10.2,20.6],},
+        {label: ' Delaware County ', fill: false, data: [9.3,,,,,,3.8,,,,4.1,,4.8,4.1,3.6,7.6,7.6,18.1,30.5,27.3],},
+        {label: ' Erie County ', fill: false, data: [,,,,,,,,,,,,,7.5,8.6,9.3,12.9,23.5,35.0,20.6],},
+        {label: ' Fayette County ', fill: false, data: [,,,,,,,,,,14.6,,24.2,,23.0,24.6,30.7,51.2,28.9,],},
+        {label: ' Franklin County ', fill: false, data: [,,,,,,,,,,,,,,,,,17.5,14.3,],},
+        {label: ' Lackawanna County ', fill: false, data: [,9.8,,10.9,10.4,10.4,,,10.8,12.1,12.6,10.7,16.8,18.7,16.8,15.0,20.3,27.9,31.8,39.8],},
+        {label: ' Lancaster County ', fill: false, data: [,,,,,,,,,,,,,,,5.1,6.3,8.4,9.0,10.5],},
+        {label: ' Lawrence County ', fill: false, data: [,,,,,,,,,,,,,,22.4,22.5,31.8,43.5,55.1,39.5],},
+        {label: ' Lehigh County ', fill: false, data: [,,,,7.5,,,,,,,,,,,,,8.8,11.5,10.3],},
+        {label: ' Luzerne County ', fill: false, data: [,,,,,,,,,,,,,,,,,,11.7,20.5],},
+        {label: ' Mercer County ', fill: false, data: [,,,,,,,,,,,,,,,,,17.7,17.9,22.6],},
+        {label: ' Monroe County ', fill: false, data: [,,,,,,,,,,,,,,15.0,14.4,12.0,,13.7,],},
+        {label: ' Montgomery County ', fill: false, data: [,,,,,,,,,4.2,8.2,10.3,8.5,10.5,11.8,12.5,12.2,22.8,19.1,20.9],},
+        {label: ' Northampton County ', fill: false, data: [,,,,,,,,,,,,,,7.0,7.0,16.0,19.8,28.3,20.0],},
+        {label: ' Northumberland County ', fill: false, data: [,,,,,,,,,,,,,,,,,21.6,23.9,],},
+        {label: ' Philadelphia County ', fill: false, data: [1.4,,,,,,1.8,,,3.0,2.2,1.6,2.3,1.8,1.7,2.7,2.0,2.0,3.0,47.3],},
+        {label: ' Schuylkill County ', fill: false, data: [,,,,,,,,,,,,,,,,13.8,33.4,17.5,32.4],},
+        {label: ' Washington County ', fill: false, data: [,,,,9.8,10.8,,,,,,13.0,18.2,11.5,20.2,14.4,26.9,50.0,49.2,33.8],},
+        {label: ' Westmoreland County ', fill: false, data: [,,,,6.5,5.7,8.7,8.5,,7.6,12.6,10.1,,,,,,9.3,6.2,],},
+        {label: ' York County ', fill: false, data: [,,,,,,,,,,,,,5.5,5.2,12.0,12.9,10.4,17.0,14.7],},]
+            },
+            options: {
+              legend: {
+                position: 'bottom'
+              },
+              scales: {
+                yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Deaths per 100,000"
+                  }
+                }],
+                xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Year"
+                  }
+                }]
+              },
+              plugins: {
+                colorschemes: {
+                  scheme: 'tableau.Classic20'
+                }
+              },
+              responsive: true,  
+            }
+          });
+        </script>
+      </div>
+    </div>
+
+      <!-- Graph 3 -->
+      <div class="carousel-item">
+            
+
+      <div class="container">
+        <h3>Emergency Department Visits for Opioid Overdose Quarterly by County</h3>
+        <p>Source: <a href=""></a></p>
+
+        <canvas id="ED_Chart" height="150 !important"></canvas>
+        <script type="text/javascript">
+          var ctx = document.getElementById('ED_Chart');
+          var ED_Chart = new Chart(ctx,{
+            type: 'line',
+            data:{
+              labels: ['2016 Q3','2016 Q4','2017 Q1','2017 Q2','2017 Q3','2017 Q4','2018 Q1','2018 Q2','2018 Q3','2018 Q4','2019 Q1','2019 Q2','2019 Q3','2019 Q4','2020 Q1',],
+              datasets: [{label: ' Adams ', fill: false, data: [0.69,1.37,0.68,6.54,,,,12.26,13.71,8.25,8.38,,6.79,12.61,1.26],},
+{label: ' Allegheny ', fill: false, data: [21.25,3.26,4.15,3.97,4.28,22.26,14.84,16.78,2.3,2.25,1.68,15.49,2.71,2.26,2.84],},
+{label: ' Armstrong ', fill: false, data: [13.28,3.76,2.59,14.44,12.1,,1.23,,,11.01,11.03,10.78,1.38,21.42,2.76],},
+{label: ' Beaver ', fill: false, data: [0.6,,0.9,0.72,,0.0,0.49,0.91,0.61,0.79,0.61,1.15,0.61,0.61,],},
+{label: ' Bedford ', fill: false, data: [,1.24,1.65,,,33.36,13.33,,,17.07,,1.87,15.43,18.27,1.04],},
+{label: ' Berks ', fill: false, data: [1.54,1.16,13.48,1.56,17.2,14.0,0.88,1.33,1.71,13.4,16.3,2.17,2.31,25.03,13.64],},
+{label: ' Blair ', fill: false, data: [5.95,4.7,21.17,16.14,14.67,19.26,1.55,1.63,1.39,1.31,15.1,21.04,3.51,11.97,2.69],},
+{label: ' Bradford ', fill: false, data: [,0.0,,,0.0,,0.0,,,,4.6,5.47,0.82,4.91,],},
+{label: ' Bucks ', fill: false, data: [7.15,11.81,1.18,1.69,9.76,1.16,10.33,8.83,1.88,1.8,1.18,20.68,18.53,12.88,1.13],},
+{label: ' Butler ', fill: false, data: [10.45,0.91,6.04,0.75,,,,0.64,1.06,1.28,0.75,0.8,11.15,1.12,19.22],},
+{label: ' Cambria ', fill: false, data: [10.61,5.05,5.56,28.66,14.18,21.31,2.96,1.67,1.29,10.35,10.31,2.43,2.66,12.99,3.19],},
+{label: ' Cameron ', fill: false, data: [,,0.0,0.0,0.0,,0.0,,,,,,,,0.0],},
+{label: ' Carbon ', fill: false, data: [22.56,3.77,4.07,3.6,43.52,2.66,3.27,5.45,34.0,2.8,2.34,2.49,2.49,1.87,2.49],},
+{label: ' Centre ', fill: false, data: [3.36,0.5,5.48,0.0,6.9,0.43,0.31,,,0.0,0.0,,,,0.74],},
+{label: ' Chester ', fill: false, data: [0.21,0.43,14.28,0.91,10.29,7.81,8.96,0.73,23.77,22.56,1.28,21.2,1.72,1.34,1.44],},
+{label: ' Clarion ', fill: false, data: [,,,,,,,,,,,,0.0,0.0,1.29],},
+{label: ' Clearfield ', fill: false, data: [,0.0,,,,,0.63,,,6.16,,5.83,1.26,,1.01],},
+{label: ' Clinton ', fill: false, data: [0.0,0.0,0.0,0.0,0.0,,0.0,0.0,,0.0,0.0,0.0,0.0,,],},
+{label: ' Columbia ', fill: false, data: [9.7,,,,,,,0.76,,,,1.68,,11.4,],},
+{label: ' Crawford ', fill: false, data: [6.41,0.7,9.45,,5.59,8.52,,5.82,2.12,0.82,8.31,1.76,14.59,1.29,1.06],},
+{label: ' Cumberland ', fill: false, data: [1.41,11.7,1.52,19.66,18.28,1.48,7.91,1.23,19.05,15.56,0.99,1.35,1.51,15.77,1.91],},
+{label: ' Dauphin ', fill: false, data: [23.17,1.9,21.14,24.91,14.47,2.94,2.09,13.09,2.38,1.73,1.8,20.91,2.67,22.31,2.27],},
+{label: ' Delaware ', fill: false, data: [29.41,3.69,3.44,60.11,52.47,4.09,31.94,41.84,4.41,34.96,3.03,2.28,2.16,19.01,1.51],},
+{label: ' Elk ', fill: false, data: [,,1.66,,0.0,,,,,,,,,,1.66],},
+{label: ' Erie ', fill: false, data: [0.51,0.94,19.69,2.84,2.4,1.86,14.75,2.24,2.68,16.23,11.55,2.35,19.84,1.84,1.54],},
+{label: ' Fayette ', fill: false, data: [14.24,1.66,3.5,3.5,5.25,4.49,2.99,20.65,1.84,2.15,2.53,1.99,25.01,25.75,2.07],},
+{label: ' Forest ', fill: false, data: [0.0,0.0,,,0.0,0.0,,,,,,,0.0,0.0,],},
+{label: ' Franklin ', fill: false, data: [,,,,,,,,,1.94,1.36,16.52,13.74,1.74,1.42],},
+{label: ' Fulton ', fill: false, data: [,0.0,0.0,,,0.0,0.0,,0.0,,,,0.0,0.0,],},
+{label: ' Greene ', fill: false, data: [,0.0,,,,,,,0.0,,0.0,2.19,1.64,,],},
+{label: ' Huntingdon ', fill: false, data: [0.0,,0.0,0.0,,0.0,,0.0,,0.0,0.0,0.0,,0.0,],},
+{label: ' Indiana ', fill: false, data: [6.22,6.55,7.41,5.43,1.65,1.53,0.71,,,1.3,8.95,1.42,2.72,2.37,2.13],},
+{label: ' Jefferson ', fill: false, data: [,,,,,,,,,,0.0,1.37,,0.0,],},
+{label: ' Juniata ', fill: false, data: [,,0.0,,,,,0.0,,,,,0.0,,],},
+{label: ' Lackawanna ', fill: false, data: [2.72,0.43,7.95,8.93,7.86,1.28,1.57,1.33,1.33,10.27,1.04,7.57,1.42,8.58,1.71],},
+{label: ' Lancaster ', fill: false, data: [1.65,25.87,15.59,24.13,27.9,1.4,21.18,31.78,1.43,17.81,16.48,1.67,24.62,18.91,1.66],},
+{label: ' Lawrence ', fill: false, data: [,0.69,1.49,1.03,0.69,53.0,2.9,6.85,6.15,6.15,39.47,3.25,41.48,25.28,37.23],},
+{label: ' Lebanon ', fill: false, data: [13.39,20.54,1.07,1.5,17.63,21.83,8.76,1.27,1.06,1.7,1.06,18.17,25.25,19.38,2.34],},
+{label: ' Lehigh ', fill: false, data: [1.02,8.18,0.93,0.93,1.53,2.1,1.36,1.79,3.04,1.82,2.06,22.66,20.45,18.97,2.93],},
+{label: ' Luzerne ', fill: false, data: [8.8,8.57,27.54,41.43,3.28,3.4,24.11,4.31,3.97,28.63,13.66,16.47,23.35,2.68,19.83],},
+{label: ' Lycoming ', fill: false, data: [,0.43,,,0.88,1.14,0.62,0.62,0.88,0.79,1.76,1.14,8.24,,],},
+{label: ' McKean ', fill: false, data: [,,,0.0,0.0,0.0,,,,,0.0,0.0,,0.0,],},
+{label: ' Mercer ', fill: false, data: [2.66,14.15,25.04,5.64,5.46,4.83,3.07,3.88,1.54,1.81,12.31,2.8,2.89,2.53,1.9],},
+{label: ' Mifflin ', fill: false, data: [,,,,,,5.72,5.84,,,0.0,,0.0,1.3,],},
+{label: ' Monroe ', fill: false, data: [0.96,7.46,0.77,0.65,0.3,0.6,1.59,17.61,1.42,11.04,1.06,16.98,9.45,10.73,1.42],},
+{label: ' Montgomery ', fill: false, data: [0.12,0.34,0.44,0.99,3.95,0.56,3.21,0.64,13.49,1.63,12.35,11.29,1.44,11.84,1.0],},
+{label: ' Montour ', fill: false, data: [,0.0,,,,,,,,0.0,,,0.0,,],},
+{label: ' Northampton ', fill: false, data: [1.12,9.88,0.86,13.33,1.71,16.57,1.54,17.5,1.87,9.96,10.8,1.9,1.87,1.74,2.36],},
+{label: ' Northumberland ', fill: false, data: [0.65,,,10.09,1.63,9.25,1.65,0.77,1.43,,7.7,,13.8,11.3,13.59],},
+{label: ' Perry ', fill: false, data: [,2.62,,2.6,1.52,,,,3.68,2.82,,2.17,2.82,,1.3],},
+{label: ' Philadelphia ', fill: false, data: [7.38,15.25,2.81,33.43,4.3,22.81,2.7,27.64,4.96,3.61,24.46,29.86,31.35,4.0,3.84],},
+{label: ' Pike ', fill: false, data: [,,,,,,,,1.61,0.89,0.0,,,,],},
+{label: ' Potter ', fill: false, data: [0.0,0.0,,0.0,0.0,,0.0,,0.0,0.0,,0.0,0.0,0.0,],},
+{label: ' Schuylkill ', fill: false, data: [8.99,1.18,7.42,0.84,12.63,6.93,0.7,1.34,1.9,0.77,0.42,1.13,10.24,15.45,1.27],},
+{label: ' Snyder ', fill: false, data: [,,,,0.0,,0.0,,,,,,,,],},
+{label: ' Somerset ', fill: false, data: [0.67,0.0,0.81,0.0,,,,0.68,0.95,18.44,0.81,17.19,10.23,14.78,1.49],},
+{label: ' Sullivan ', fill: false, data: [,0.0,,,0.0,0.0,0.0,,,,,,0.0,0.0,],},
+{label: ' Susquehanna ', fill: false, data: [,,1.22,1.46,,0.0,,,,,,,,0.0,],},
+{label: ' Tioga ', fill: false, data: [,0.0,0.0,0.0,0.0,0.0,,,,0.0,,0.0,,0.0,0.0],},
+{label: ' Union ', fill: false, data: [7.05,9.83,,,13.39,1.57,,,0.0,12.27,,7.87,,,],},
+{label: ' Venango ', fill: false, data: [,7.0,1.35,10.88,17.08,1.93,2.15,20.39,10.85,1.56,2.34,10.86,1.76,0.98,7.36],},
+{label: ' Warren ', fill: false, data: [,,,0.0,,0.0,,,0.0,,,,,,0.0],},
+{label: ' Washington ', fill: false, data: [3.03,2.84,26.58,27.35,3.52,17.99,1.01,1.4,1.78,1.3,12.34,11.6,16.45,19.35,28.2],},
+{label: ' Wayne ', fill: false, data: [,,,,7.57,,1.37,10.9,17.1,1.17,1.17,,18.13,20.9,0.98],},
+{label: ' Westmoreland ', fill: false, data: [1.18,2.19,2.44,2.35,2.07,,,1.2,12.47,2.51,23.45,3.05,23.98,23.15,2.42],},
+{label: ' Wyoming ', fill: false, data: [,,,,,,,1.85,,1.85,,,,,],},
+{label: ' York ', fill: false, data: [1.4,15.95,15.27,17.25,14.89,30.53,26.81,2.57,34.12,28.45,32.29,2.48,31.74,2.41,3.1],},]
+
+              },
+            options: {
+              legend: {
+                position: 'bottom'
+              },
+              title: {
+                display: true,
+                text: ''
+              },
+              scales: {
+                xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Time Period'
+                  }
+                }],
+                yAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Visits per 100,000'
+                  }
+                }],
+                
+              },
+              plugins: {
+                colorschemes: {
+                  scheme: 'tableau.Classic20'
+                }
+              },
+              responsive: true,
+                
+            }
+          });
+        </script>
+      </div>
+
+      </div>
+    </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+
+
+
+      <!-- Data Sources / Text-->
+      <hr>
+
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h2>Data Sources</h2>
+          <p style="font-size:larger;"></p>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3>CDC WONDER Mortality Data</h3>
+            <p>Data was queried from using  MCD - ICD-10 Codes: T40.0 (Opium); T40.1 (Heroin); T40.2 (Other opioids); T40.3 (Methadone); T40.4 (Other synthetic narcotics); T40.6 (Other and unspecified narcotics).</p>
+            <p><a class="btn btn-primary" href="https://wonder.cdc.gov/mcd.html" role="button">View Source &raquo;</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <h4>State Police Overdose Information Network Data (2018 - Current) by County </h4>
+            <p>This dataset contains summary information on overdose responses and naloxone administrations by Pennsylvania criminal justice agencies and some third-party (i.e. EMS, Fire, Medical Staff, etc) first responders voluntarily entering incident data. Due to the voluntary nature of the application, the ODIN information provided may not represent the totality of all overdose and/or naloxone administration incidents involving criminal justice agencies occurring within the Commonwealth. Although this dataset does include some third-party administrations of naloxone, it should not be used to measure overdose response and naloxone administration incidents among all first responders.</p>
+            <p><a class="btn btn-primary" href="https://data.pa.gov/Opioid-Related/Overdose-Information-Network-Data-CY-January-2018-/hbkk-dwy3" role="button">View Source &raquo;</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <h4>Emergency Medical Services (EMS) Naloxone Dose Administered (2018 - Current) by County</h4>
+            <p></p>
+            <p><a class="btn btn-primary" href="https://data.pa.gov/Opioid-Related/Emergency-Medical-Services-EMS-Naloxone-Dose-Admin/wst4-3int" role="button">View Source &raquo;</a></p>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <h4>Emergency Department Visits for Overdose (Q3 2016 - Current) Quarterly by County</h4>
+            <p></p>
+            <p><a class="btn btn-primary" href="https://data.pa.gov/Opioid-Related/Emergency-Department-ED-Visits-for-Overdose-Identi/vvvs-z9dr" role="button">View Source &raquo;</a></p>
+          </div>
+        </div>
+
+
+      </div> <!-- /container -->
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h2>Methodology</h2> 
+        </div>
+      </div>
+
+
+      <hr>
+
+    </main>
+
+    <footer class="container">
+      <p>This project was created as part of the <a href="https://teuscher-lab.com/altreu/">REU for Community-Serving Computational Models</a> at Portland State University.</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript">$(function(){
+        $('#myCarousel').carousel({});
+      });
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
