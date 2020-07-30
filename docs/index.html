@@ -19,7 +19,7 @@
     <!-- Custom styles for this template -->
     <style>
       body{padding-top: 3.5rem;}
-      .jumbotron{padding: 8rem; background-image: url("pa_test.png"); background-size: cover; background-position: center;}
+      .jumbotron{padding: 9rem; background-image: url("pa_test.png"); background-size: cover; background-position: center;}
     </style>
 
   </head>
@@ -28,26 +28,27 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="index.html">PA Opioid Prediction</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Predictions</a>
-          </li>
-          <li class="nac-item">
-            <a class="nav-link" href="data.html">Data</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="reources.html">Resources</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="predictions.html">Predictions</a>
+            </li>
+            <li class="nac-item">
+              <a class="nav-link" href="data.html">Data</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="resources.html">Resources</a>
+            </li>
         </ul>
       </div>
+
+      <ul class="navbar-nav">
+        <li class="nav-item" style="text-align: right;">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+      </ul>
+
     </nav>
 
     <main role="main">
@@ -57,7 +58,6 @@
         <div class="container">
           <h1 class="display-4"><b>Using data to prevent opioid overdoses.</b></h1>
           <p style="font-size:larger;">This project uses data-driven computational models to predict the risk of opioid overdoses across Pennsylvania - allowing your community to be proactive in the fight against this public health crisis.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
 
@@ -68,34 +68,87 @@
       </div>
 
 
-      <div class="container">
-        <!-- Example row of columns -->
+      <div class="container"> <!-- Text -->
         <div class="row">
           <div class="col-md-4">
-            <h2>Predictions</h2>
+            <h2><a href="predictions.html">Predictions</a></h2>
             <p>View the geographic and temporal risk of opioids for communities in Pennsylvania. Be informed and proactive with predictions of future overdoses. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Data + Methodology</h2>
-            <p>Explore the trends in opioid abuse used to train this model. See the structure, methodology, and modeling assumptions of this project.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <h2><a href="data.html">Data + Methodology</a></h2>
+            <p>Explore the extensive state and national data used to train this model. See the methodology and modeling assumptions of this project.</p>
           </div>
           <div class="col-md-4">
-            <h2>Resources</h2>
+            <h2><a href="resources.html">Resources</a></h2>
             <p>Pennsylvania is facing the worst public health crisis in a generation. Learn about statewide resources for prevention and treatment in your community.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">Learn More &raquo;</a></p>
           </div>
         </div>
 
         <hr>
+        <h1>The Opioid Crisis</h1>
+        <p style="font-size:larger;">In the 21st century, <b>nearly 450,000 Americans have died from an opioid overdose.</b><sup>[<a href='https://www.cdc.gov/drugoverdose/epidemic/index.html'>1</a>]</sup> This exceeds the number of American military deaths in World War II. Every day, around 10 Pennsylvanians die from a drug overdose,<sup>[<a href='https://www.pa.gov/guides/opioid-epidemic/'>2</a>]</sup> the majority involving prescription (e.g. OxyContin) or illicit (e.g. Fentanyl) opioids.</p>
 
-      </div> <!-- /container -->
+        <div class="row">
+          <div class="col-md-5">
+
+          <p>This crisis began with the routine prescription of easily abusable opioids such as Oxycodone in the late 1990s. The situation escalated around ten years ago with increased use of heroin as well as synthetic opioids like Fentanyl. Consequently, the rate of opioid overdose fatalities (deaths per 100,000 residents) has exploded in recent years. For every 100,000 Pennsylvanians, 23.8 died due to an opioid overdose in 2018.<sup>[<a href='https://www.drugabuse.gov/drug-topics/opioids/opioid-summaries-by-state/pennsylvania-opioid-involved-deaths-related-harms'>3</a>]</sup></p>
+
+          <p>Despites its massive and ever-increasing death toll, this crisis received remarkably little attention in the national discourse for many years. While the opioid epidemic has finally become more salient in media, the resources devoted to this issue are dwarfed by the immensity of its carnage. Nationally, the number of opioid deaths has exceeded the number of traffic fatalities in some years. In 2018 alone, the epidemic cost an estimated $179 billion in negative externalities.<sup>[<a href='https://www.npr.org/sections/health-shots/2019/10/24/773148861/calculating-the-real-costs-of-the-opioid-epidemic'>4</a>]</sup></p>
+
+          </div> <!-- /Column -->
+
+          <div class="col-md-7">
+            <img src="CDC.png" alt="CDC" style="width: 85%;">
+            <p style="font-size: smaller;">Image: <a href="https://www.cdc.gov/drugoverdose/epidemic/index.html">CDC</a></p>
+          </div>
+        </div> <!-- /Row -->
+
+
+        <p style="font-size:larger;"><b>This project is a step toward stoping this crisis.</b> It aggregates critical data related to opioid abuse and related factors from state and national sources. This data feeds into multiple computational models to predict the risk of future overdoses across various counties in PA. A more detailed look at data sourcing and model architecture can be found <a href="data.html">here</a>.</p>
+
+        <p style="font-size:larger; padding-top: 1rem; padding-bottom: 1rem;"><b>Check out our data-driven <a href="predictions.html">predictions of opioid overdose risk</a>.</b></p>
+
+
+        <hr>
+        <h1>Models</h1>
+
+        <p>This project provides several models reflecting different data sets and different levels of model complexity.</p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3>County-Level Regression</h3>
+            <p style="font-size:larger; color: gray;">Prediction: Annual Deaths per 100,000 due to Opioids</p>
+
+            <p>The opioid death rate in each of Pennsylvania's 67 counties is influenced by a number of factors. <b>This model analyzes demographic data from the U.S. Census Bureau for each county</b> to learn to predict its annual opioid death rate.
+            Specifically, it considers income, employment, and poverty data for each county.</p>
+
+            <p>The model is a simple neural network for regression trained on county-level data from the Census Bureau and the CDC from the past 10 years. More detailed information can be found in <a href="data.html"><b>Data + Methodology</b></a>.</p>
+
+            <p style="font-size: larger;"><b>Check out model <a href="predictions.html">predictions for 2020</a>.</b></p>
+          </div>
+          <div class="col-md-6">
+            <img src="basic_sns.png" alt="sns" style="width: 80%;">
+          </div>
+        </div>
+
+
+        <h3>Time Series Forecasting</h3>
+        <p style="font-size:larger; color: gray;">Prediction: Daily Naloxone Administrations</p>
+
+        <p>Every day, first responders administer Naloxone (Narcan&#174;) to people undergoing an opioid overdose. <b>This model takes in data from the tens of thousands of Naloxone administrations performed in PA</b> over the last three years. Using a sophisticated deep learning model, it identifies trends and recurrences to predict the number of future overdose incidents.</p>
+
+        <p style="font-size: larger;"><b>Check out model <a href="predictions.html">predictions for the next quarter</a>.</b></p>
+
+
+      </div>
 
     </main>
 
-    <footer class="container">
-      <p>This project was created as part of the <a href="https://teuscher-lab.com/altreu/">REU for Community-Serving Computational Models</a> at Portland State University.</p>
+    <footer> 
+      <div class="container">
+        <hr>
+        <p>PA Opioid Prediction Project, 2020</p>
+      </div>
     </footer>
 
     <!-- Bootstrap core JavaScript
