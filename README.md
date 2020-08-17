@@ -10,3 +10,7 @@ This repository holds my project for the _altREU_ program: Computational Models 
 
 ## Assistance
 Special thanks to project advisor Dr. Wayne Wakeland, as well as program director Dr. Christof Teuscher, and MacKenzie Gray.
+
+### Resources Used
+
+- TensorFlow Tutorials: https://www.tensorflow.org/tutorials
