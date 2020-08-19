@@ -8,7 +8,7 @@ This repository holds my project for the _altREU_ program: Computational Models 
 
 #### Detailed information as well as model predictions can be found at the project website: https://ncarolan.github.io/opioid/.
 
-## Assistance
+## Acknowledgments
 Special thanks to project advisor Dr. Wayne Wakeland, as well as program director Dr. Christof Teuscher, and MacKenzie Gray.
 
 ### Resources Used
