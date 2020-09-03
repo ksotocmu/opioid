@@ -20,11 +20,13 @@
     <!-- Chart Colors -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
 
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <style>
       .jumbotron{padding:5rem;}
-      body{padding-top: 3.5rem;}
+      body{padding-top: 5rem;}
       .carousel-control-prev-icon,
       .carousel-control-next-icon {
           filter: invert(1);
@@ -45,21 +47,22 @@
         padding: 10px;
         display: none;
         }
+      .nav-link{font-size: larger;}
+      .navbar-brand{font-size: x-large;}
     </style>
 
-    <!-- Bootstrap core CSS -->
-    <!--link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 
 
   </head>
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+      <img src="keystone.svg" style="height: 40px; padding:0.5rem;" alt="Keystone">
       <a class="navbar-brand" href="index.html">PA Opioid Prediction</a>
       
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           
           <li class="nav-item">
@@ -84,13 +87,12 @@
 
     <main role="main">
 
-      <div class="jumbotron jumbotron-fluid">
+      <!--div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4"><b>Data-driven modeling for opioid forecasting.</b></h1>
           <p style="font-size:larger;">This project runs on public data sets from state and national sources. For transparency, we publish our data sourcing and methodology.</p>
-          <!--p style="font-size:larger;">The data used to train our models was sampled from <a href="https://data.pa.gov/browse?limitTo=datasets&tags=opioid">Open Data Pennsylvania</a> and the Centers for Disease Control and Prevention's <a href="https://wonder.cdc.gov/mcd.html">WONDER Portal</a>.</p-->
         </div>
-      </div>
+      </div-->
 
       <div id="demo" class="carousel slide" data-ride="carousel" data-interval=false>
 
@@ -445,73 +447,14 @@
 
       <!-- Map -->
       <div class="container">
-        <h3>Map</h3>
-        <p>Source: <a href=""></a></p>
 
-      <!--div id='map' style='width: 100%; height: 500px;'></div>
-      <div id='map-overlay' class="map-overlay"></div>
-      <script>
-          mapboxgl.accessToken = 'pk.eyJ1IjoibmNhcm9sYW4iLCJhIjoiY2tjb3duc2dhMDB0eTJ6cGdvY2x3dHB1NSJ9.aAACYfSeoetdD-a2aVnBRQ';
-          var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
-          center: [-77.6, 41], // starting position [lng, lat]
-          zoom: 6.4 // starting zoom
-          });
-          
-          var overlay = document.getElementById('map-overlay');
-           
-          // Create a popup, but don't add it to the map yet.
-          var popup = new mapboxgl.Popup({
-          closeButton: false
-          });
-           
-          map.on('load', function() {
-          // Add the source to query. In this example we're using
-          // county polygons uploaded as vector tiles
-            map.addSource('counties', {
-            'type': 'vector',
-            'url': 'mapbox://mapbox.82pkq93d'
-            });
-             
-            map.addLayer(
-            {
-            'id': 'counties',
-            'type': 'fill',
-            'source': 'counties',
-            'source-layer': 'original',
-            'paint': {
-            'fill-outline-color': 'rgba(0,0,0,0.1)',
-            'fill-color': 'rgba(0,0,0,0.1)'
-            }
-            },
-            'settlement-label'
-            ); // Place polygon under these labels.
-                         
-            map.addLayer(
-            {
-            'id': 'counties-highlighted',
-            'type': 'fill',
-            'source': 'counties',
-            'source-layer': 'original',
-            'paint': {
-            'fill-outline-color': '#484896',
-            'fill-color': '#6e599f',
-            'fill-opacity': 0.5
-            },
-            'filter': ['in', 'COUNTY', '']
-            },
-            'settlement-label'
-            ); // Place polygon under these labels.
- 
-        });
-        </script-->
 
 
 <!-- PA Data Dashboard Map -->
 <script type="text/javascript" charset="UTF-8" data-locale="en" data-socrata-domain="data.pa.gov" src="https://data.pa.gov/component/visualization/v1/socrata-visualizations-loader.js"></script>
 <a class="socrata-visualization-embed" data-embed-version="1" data-width="100%" data-height="700" data-socrata-domain="data.pa.gov" data-vizcan-uid="yqsq-mu83" data-vif="{&quot;configuration&quot;:{&quot;viewSourceDataLink&quot;:true,&quot;mapCenterAndZoom&quot;:{&quot;center&quot;:{&quot;lng&quot;:-77.6044544618158,&quot;lat&quot;:41.00695887445272},&quot;zoom&quot;:6.480262049964238},&quot;basemapOptions&quot;:{&quot;searchBoundaryLowerRightLongitude&quot;:-75.0327092448,&quot;searchBoundaryUpperLeftLongitude&quot;:-80.3510735648,&quot;searchBoundaryUpperLeftLatitude&quot;:41.9941378702,&quot;navigationControl&quot;:true,&quot;basemapStyle&quot;:&quot;mapbox://styles/mapbox/basic-v9&quot;,&quot;geoCoderControl&quot;:true,&quot;geoLocateControl&quot;:true,&quot;searchBoundaryLowerRightLatitude&quot;:39.8548039342},&quot;mapPitchAndBearing&quot;:{&quot;bearing&quot;:0,&quot;pitch&quot;:0},&quot;datasetMetadata&quot;:false,&quot;panAndZoom&quot;:true,&quot;locateUser&quot;:false},&quot;series&quot;:[{&quot;visible&quot;:true,&quot;color&quot;:{&quot;palette&quot;:&quot;custom&quot;,&quot;customPalette&quot;:{&quot;:@computed_region_nmsq_hqvv&quot;:{&quot;90 - 221&quot;:{&quot;dashed&quot;:false,&quot;color&quot;:&quot;#bed7e8&quot;,&quot;start&quot;:90,&quot;index&quot;:1,&quot;charmName&quot;:&quot;&quot;,&quot;end&quot;:221,&quot;id&quot;:90,&quot;label&quot;:&quot;90 - 221&quot;},&quot;1 - 83&quot;:{&quot;dashed&quot;:false,&quot;color&quot;:&quot;#f0f2ff&quot;,&quot;start&quot;:1,&quot;index&quot;:0,&quot;charmName&quot;:&quot;&quot;,&quot;end&quot;:83,&quot;id&quot;:1,&quot;label&quot;:&quot;1 - 83&quot;},&quot;3,420&quot;:{&quot;dashed&quot;:false,&quot;color&quot;:&quot;#1e489f&quot;,&quot;start&quot;:3420,&quot;index&quot;:4,&quot;charmName&quot;:&quot;&quot;,&quot;end&quot;:3420,&quot;id&quot;:3420,&quot;label&quot;:&quot;3,420&quot;},&quot;1,403&quot;:{&quot;dashed&quot;:false,&quot;color&quot;:&quot;#3d7ec0&quot;,&quot;start&quot;:1403,&quot;index&quot;:3,&quot;charmName&quot;:&quot;&quot;,&quot;end&quot;:1403,&quot;id&quot;:1403,&quot;label&quot;:&quot;1,403&quot;},&quot;294 - 538&quot;:{&quot;dashed&quot;:false,&quot;color&quot;:&quot;#71abd9&quot;,&quot;start&quot;:294,&quot;index&quot;:2,&quot;charmName&quot;:&quot;&quot;,&quot;end&quot;:538,&quot;id&quot;:294,&quot;label&quot;:&quot;294 - 538&quot;},&quot;(No value)&quot;:{&quot;dashed&quot;:false,&quot;color&quot;:&quot;transparent&quot;,&quot;index&quot;:5,&quot;charmName&quot;:&quot;&quot;,&quot;id&quot;:&quot;__empty_value__&quot;,&quot;label&quot;:&quot;(No value)&quot;}}},&quot;primary&quot;:&quot;#eb6900&quot;},&quot;mapOptions&quot;:{&quot;shapeOutlineColor&quot;:&quot;#252525&quot;,&quot;simplificationLevel&quot;:&quot;1&quot;,&quot;mapType&quot;:&quot;pointMap&quot;,&quot;pointAggregation&quot;:&quot;region_map&quot;,&quot;shapeOutlineWidth&quot;:1},&quot;showLegend&quot;:true,&quot;type&quot;:&quot;map&quot;,&quot;dataSource&quot;:{&quot;measure&quot;:{&quot;aggregationFunction&quot;:&quot;sum&quot;,&quot;columnName&quot;:&quot;record_count&quot;},&quot;name&quot;:&quot;Emergency Medical Services (EMS) Naloxone Dose Administered Health&quot;,&quot;filters&quot;:[{&quot;function&quot;:&quot;timeRange&quot;,&quot;arguments&quot;:{&quot;calendarDateFilterType&quot;:&quot;Range&quot;,&quot;start&quot;:&quot;2018-01-01&quot;,&quot;end&quot;:&quot;2020-03-31T23:59:59&quot;},&quot;isDrilldown&quot;:false,&quot;isHidden&quot;:false,&quot;columnName&quot;:&quot;event_date&quot;},{&quot;function&quot;:&quot;>&quot;,&quot;arguments&quot;:{&quot;includeNullValues&quot;:false,&quot;value&quot;:&quot;0&quot;},&quot;isDrilldown&quot;:false,&quot;isHidden&quot;:true,&quot;columnName&quot;:&quot;record_count&quot;}],&quot;type&quot;:&quot;socrata.soql&quot;,&quot;datasetUid&quot;:&quot;xj6k-qpsh&quot;,&quot;dimension&quot;:{&quot;columnName&quot;:&quot;geocoded_column&quot;,&quot;aggregationFunction&quot;:null}},&quot;computedColumnName&quot;:&quot;:@computed_region_nmsq_hqvv&quot;,&quot;primary&quot;:true,&quot;shapefile&quot;:{&quot;uid&quot;:&quot;nmsq-hqvv&quot;,&quot;geometryLabel&quot;:&quot;county_nam&quot;,&quot;primaryKey&quot;:&quot;_feature_id&quot;},&quot;label&quot;:null}],&quot;format&quot;:{&quot;type&quot;:&quot;visualization_interchange_format&quot;,&quot;version&quot;:3},&quot;description&quot;:&quot;&quot;,&quot;id&quot;:&quot;b9664ebf-8816-4b78-a85c-81004afd2932&quot;,&quot;title&quot;:&quot;Emergency Medical Services(EMS) Naloxone Dose Administered&quot;,&quot;currentMapLayerIndex&quot;:0}" data-width="800" href="https://data.pa.gov/Opioid-Related/Emergency-Medical-Services-EMS-Naloxone-Dose-Admin/wst4-3int?referrer=embed" rel="external" target="_blank">View the data</a>
 
+        <p>Source: <a href="https://data.pa.gov/Opioid-Related/Map-for-Emergency-Medical-Services-EMS-Naloxone-Do/yqsq-mu83" target="_blank">PA Opioid Data Dashboard</a></p>
 
 
       </div>
@@ -584,11 +527,8 @@
 
       <div class="container">
 
-          <p>This project uses machine learning models to predict the likelihood of opioid overdoses and deaths across Pennsylvania. Machine learning models simply learn relationships from the training data they are provided. In this project, models are trained on data relating to opioid overdoses provided by the state and national government.</p>
+          <p>This project uses machine learning models to predict the likelihood of opioid overdoses and deaths across Pennsylvania. Machine learning models learn relationships from the training data they are provided. In this project, models are trained on data relating to opioid overdoses/deaths provided by the state and national government.</p>
 
-          <p>Building a high-quality machine learning model demands high-quality and high-volume data.</p>
-
-        <h2>Model Architecture</h2>
           <hr>
 
           <p>Due to the different characteristics of the available data, this project elected to develop several models to predict different opioid-related statistics. The first approach, a regression model, tries to predict how many people (per 100,000) will die of an opioid overdose per year in a given county. This involves learning a relationship between other characteristics of that county (such as income, poverty, unemployment rates, etc.) and the level of opioid overdoses.</p>
@@ -600,16 +540,20 @@
 
             <p>The model is a simple feed-forward dense neural network for regression. It has two hidden layers, each with 64 neurons, and produces a single output corresponding to a county's opioid-induced death rate. The model is trained with RMSProp with learning rate = 0.001 to minimize mean squared error. It trains with early stopping based on validation set loss.</p>
 
-            <p>After the model is trained on its training data, it is evaluated on test data it has not seen before to assess its accuracy. This regression model explained 45.41% of the variance in the test data.</p>
+            <p>After the model is trained on its training data, it is evaluated on test data it has not seen before to assess its accuracy. This regression model explained 47% of the variance in the test data.</p>
 
             <img src="DeathRateTestError.png" alt="DeathRateTestError" style="width: 50%;">
 
+          <hr>
+
+          <p>The second model performs time series analysis to predict the number of Naloxone administrations will be performed by Emergency Medical Services in the state during a given day.</p>
 
           <h3>Time Series Forecasting</h3>
             <p style="font-size:larger; color: gray;">Prediction: Daily Naloxone Administrations</p>
 
-            <p>Every day, first responders administer Naloxone (Narcan&#174;) to people undergoing an opioid overdose. This model takes in data from the tens of thousands of Naloxone administrations performed in PA over the last three years. Using a sophisticated deep learning model, it identifies trends and recurrences to predict the number of future overdose incidents.</p>
+            <p>Every day, first responders administer Naloxone (Narcan&#174;) to people undergoing an opioid overdose. This model takes in data from the tens of thousands of Naloxone administrations performed in PA over the last three years. It attempts to identify patterns relating to the frequency of these overdose responses to better predict the likelihood of future overdose responses.</p>
 
+            <p>The model is a Long Short-Term Memory (LSTM) recurrent neural network. This type of network architecture is designed to model trends over time and capture both short and long-term dependencies. </p>
 
 
 

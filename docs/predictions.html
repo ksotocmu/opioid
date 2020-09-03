@@ -37,6 +37,8 @@
         height: 100%;
         width: 100%;
       }
+      .nav-link{font-size: larger;}
+      .navbar-brand{font-size: x-large;}
     </style>
 
     <script>
@@ -62,10 +64,11 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+      <img src="keystone.svg" style="height: 40px; padding:0.5rem;" alt="Keystone">
       <a class="navbar-brand" href="index.html">PA Opioid Prediction</a>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="predictions.html">Predictions</a>
@@ -90,9 +93,114 @@
     <main role="main">
 
       <div class="container">
-        <h1>Predictions</h1>
-        <hr>
 
+        <h3>Opioid Death Rate by County</h3>
+        <p>Data Source: <a href="data.html#data">CDC Wonder</a></p>
+        <p>This model predicts the deaths per 100,000 residents of a county due to opioid overdoses. Actual rates from 1999 to 2018 are displayed with a solid line, while model predictions are displayed with a dashed line.</p>
+
+        <canvas id="MCD_Chart" height="200 !important"></canvas>
+        <script type="text/javascript">
+          var ctx = document.getElementById('MCD_Chart');
+          var MCD_Chart = new Chart(ctx,{
+            type: 'line',
+            data:{
+              labels: [1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],
+              datasets: [
+        {label: ' Allegheny County ', fill: false, data: [7.3,7.6,7.0,9.2,12.6,11.7,13.6,7.6,13.6,14.0,13.7,13.3,16.3,18.6,17.7,19.7,29.4,45.9,55.1,32.3],},
+        {label: ' Beaver County ', fill: false, data: [,,,,,,,,,,,,12.9,15.3,20.0,12.4,13.6,35.2,30.7,14.6],},
+        {label: ' Berks County ', fill: false, data: [,,,,,,,,,4.9,6.8,5.6,5.8,5.8,7.7,10.2,6.7,18.6,20.8,18.3],},
+        {label: ' Bucks County ', fill: false, data: [,3.5,,,,,,,,,,,3.4,4.0,4.3,3.7,,9.4,18.3,18.8],},
+        {label: ' Butler County ', fill: false, data: [,,,,,,,,,,,,13.5,11.4,17.3,13.4,22.5,35.9,43.3,19.7],},
+        {label: ' Cambria County ', fill: false, data: [,,,,,,14.3,18.5,,14.5,,,,,,,22.0,33.4,16.5,16.7],},
+        {label: ' Chester County ', fill: false, data: [,,,,,,,,,,,,,,,,,7.9,12.5,21.3],},
+        {label: ' Crawford County ', fill: false, data: [,,,,,,,,,,,,,,,,,26.7,,23.5],},
+        {label: ' Cumberland County ', fill: false, data: [,,,,,,,,,,,,,,,,8.5,13.7,15.2,11.1],},
+        {label: ' Dauphin County ', fill: false, data: [,,,,,,,,,,,,,,7.8,,9.2,9.9,10.2,20.6],},
+        {label: ' Delaware County ', fill: false, data: [9.3,,,,,,3.8,,,,4.1,,4.8,4.1,3.6,7.6,7.6,18.1,30.5,27.3],},
+        {label: ' Erie County ', fill: false, data: [,,,,,,,,,,,,,7.5,8.6,9.3,12.9,23.5,35.0,20.6],},
+        {label: ' Fayette County ', fill: false, data: [,,,,,,,,,,14.6,,24.2,,23.0,24.6,30.7,51.2,28.9,],},
+        {label: ' Franklin County ', fill: false, data: [,,,,,,,,,,,,,,,,,17.5,14.3,],},
+        {label: ' Lackawanna County ', fill: false, data: [,9.8,,10.9,10.4,10.4,,,10.8,12.1,12.6,10.7,16.8,18.7,16.8,15.0,20.3,27.9,31.8,39.8],},
+        {label: ' Lancaster County ', fill: false, data: [,,,,,,,,,,,,,,,5.1,6.3,8.4,9.0,10.5],},
+        {label: ' Lawrence County ', fill: false, data: [,,,,,,,,,,,,,,22.4,22.5,31.8,43.5,55.1,39.5],},
+        {label: ' Lehigh County ', fill: false, data: [,,,,7.5,,,,,,,,,,,,,8.8,11.5,10.3],},
+        {label: ' Luzerne County ', fill: false, data: [,,,,,,,,,,,,,,,,,,11.7,20.5],},
+        {label: ' Mercer County ', fill: false, data: [,,,,,,,,,,,,,,,,,17.7,17.9,22.6],},
+        {label: ' Monroe County ', fill: false, data: [,,,,,,,,,,,,,,15.0,14.4,12.0,,13.7,],},
+        {label: ' Montgomery County ', fill: false, data: [,,,,,,,,,4.2,8.2,10.3,8.5,10.5,11.8,12.5,12.2,22.8,19.1,20.9],},
+        {label: ' Northampton County ', fill: false, data: [,,,,,,,,,,,,,,7.0,7.0,16.0,19.8,28.3,20.0],},
+        {label: ' Northumberland County ', fill: false, data: [,,,,,,,,,,,,,,,,,21.6,23.9,],},
+        {label: ' Philadelphia County ', fill: false, data: [1.4,,,,,,1.8,,,3.0,2.2,1.6,2.3,1.8,1.7,2.7,2.0,2.0,3.0,47.3],},
+        {label: ' Schuylkill County ', fill: false, data: [,,,,,,,,,,,,,,,,13.8,33.4,17.5,32.4],},
+        {label: ' Washington County ', fill: false, data: [,,,,9.8,10.8,,,,,,13.0,18.2,11.5,20.2,14.4,26.9,50.0,49.2,33.8],},
+        {label: ' Westmoreland County ', fill: false, data: [,,,,6.5,5.7,8.7,8.5,,7.6,12.6,10.1,,,,,,9.3,6.2,],},
+        {label: ' York County ', fill: false, data: [,,,,,,,,,,,,,5.5,5.2,12.0,12.9,10.4,17.0,14.7],},
+
+        {label: '  Adams County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 14.85 , 30.53876 , 36.368088 ], borderDash: [10,5]},
+        {label: '  Allegheny County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 32.3 , 31.865046 , 19.979656 ], borderDash: [10,5]},
+        {label: '  Beaver County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 14.6 , 29.30337 , 37.138813 ], borderDash: [10,5]},
+        {label: '  Berks County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 18.3 , 23.390366 , 27.13468 ], borderDash: [10,5]},
+        {label: '  Bucks County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 18.8 , 24.68017 , 22.967691 ], borderDash: [10,5]},
+        {label: '  Butler County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 19.7 , 28.46602 , 32.8686 ], borderDash: [10,5]},
+        {label: '  Cambria County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 16.7 , 30.672396 , 40.17965 ], borderDash: [10,5]},
+        {label: '  Carbon County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 26.0 , 32.48939 , 39.858387 ], borderDash: [10,5]},
+        {label: '  Chester County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 21.3 , 24.699854 , 23.899364 ], borderDash: [10,5]},
+        {label: '  Clearfield County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 26.2 , 32.38661 , 43.679977 ], borderDash: [10,5]},
+        {label: '  Columbia County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 25.5 , 31.912663 , 39.967484 ], borderDash: [10,5]},
+        {label: '  Crawford County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 23.5 , 32.105206 , 39.96849 ], borderDash: [10,5]},
+        {label: '  Cumberland County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 11.1 , 26.334044 , 29.60099 ], borderDash: [10,5]},
+        {label: '  Dauphin County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 20.6 , 25.565226 , 30.711893 ], borderDash: [10,5]},
+        {label: '  Delaware County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 27.3 , 22.718931 , 24.49537 ], borderDash: [10,5]},
+        {label: '  Erie County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 20.6 , 27.00007 , 33.749184 ], borderDash: [10,5]},
+        {label: '  Franklin County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 17.0 , 28.610777 , 33.54682 ], borderDash: [10,5]},
+        {label: '  Indiana County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 24.55 , 32.227097 , 43.310677 ], borderDash: [10,5]},
+        {label: '  Lackawanna County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 39.8 , 28.90654 , 35.53565 ], borderDash: [10,5]},
+        {label: '  Lancaster County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 10.5 , 24.017338 , 23.627054 ], borderDash: [10,5]},
+        {label: '  Lawrence County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 39.5 , 33.49352 , 39.97988 ], borderDash: [10,5]},
+        {label: '  Lehigh County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 10.3 , 23.578436 , 29.848173 ], borderDash: [10,5]},
+        {label: '  Luzerne County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 20.5 , 25.943972 , 34.38739 ], borderDash: [10,5]},
+        {label: '  Mercer County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 22.6 , 31.850172 , 41.833183 ], borderDash: [10,5]},
+        {label: '  Monroe County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 13.85 , 30.240278 , 41.062347 ], borderDash: [10,5]},
+        {label: '  Montgomery County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 20.9 , 25.974455 , 21.007494 ], borderDash: [10,5]},
+        {label: '  Northampton County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 20.0 , 26.217937 , 31.671682 ], borderDash: [10,5]},
+        {label: '  Northumberland County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 24.25 , 31.468164 , 40.03438 ], borderDash: [10,5]},
+        {label: '  Philadelphia County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 47.3 , 26.836546 , 16.2568 ], borderDash: [10,5]},
+        {label: '  Schuylkill County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 32.4 , 31.561428 , 39.937843 ], borderDash: [10,5]},
+        {label: '  Washington County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 33.8 , 27.990995 , 33.30822 ], borderDash: [10,5]},
+        {label: '  Westmoreland County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 7.05 , 26.017664 , 29.604694 ], borderDash: [10,5]},
+        {label: '  York County  ', fill: false, data: [,,,,,,,,,,,,,,,,,,, 14.7 , 23.519703 , 25.29062 ], borderDash: [10,5]},
+
+
+        ]
+            },
+            options: {
+              legend: {
+                position: 'bottom'
+              },
+              scales: {
+                yAxes: [{
+                  scaleLabel: {
+                    fontSize: 14,
+                    display: true,
+                    labelString: "Deaths per 100,000"
+                  }
+                }],
+                xAxes: [{
+                  scaleLabel: {
+                    display: false,
+                    labelString: "Year"
+                  }
+                }]
+              },
+              plugins: {
+                colorschemes: {
+                  scheme: 'tableau.Classic20'
+                }
+              },
+              responsive: true,  
+            }
+          });
+        </script>
 
 
         <h3>EMS Naloxone Administrations</h3>
@@ -150,14 +258,8 @@
           });
         </script>
       
-
-        
-
-
-
       </div>
-      
-        <div id="viewDiv"></div>
+
 
     </main>
 
